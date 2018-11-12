@@ -1,0 +1,44 @@
+html{
+  height: 100%;
+  width: 100%;
+  
+}
+
+li{ 
+	color: forestgreen;
+}
+
+a{
+	color: black;
+	text-decoration: none;
+}
+body{
+  background-color: gray;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+#container{
+  background-color: black;
+  display: grid;
+  grid-template-columns: 200px auto;
+  width: 100%;
+  height: 100%;
+}
+
+#myMenu{
+background-color: darkgray;
+border: 2px black solid;
+grid-column: 1/2;
+}
+
+#myIframe{
+background-color: snow;
+border: 2px black solid;
+grid-column: 2/3;
+width: 100%;
+height: 100%;
+}
