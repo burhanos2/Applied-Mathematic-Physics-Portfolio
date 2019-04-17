@@ -19,6 +19,7 @@ function animate()
 {
 	context.clearRect(0,0,canvas.width, canvas.height);
 	requestAnimationFrame(animate);
+	
 	context.drawImage(background,0,0);
 	context.save();
 	context.translate(400,300);
