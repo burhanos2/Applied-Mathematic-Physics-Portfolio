@@ -3,41 +3,34 @@ const context = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-let moon = {}, earth = {};
-let distanceMoonEarth;
+    //script.js
+        let gameObject = {};
+        let dAngle = 0.08;
+        let pivot = new Vector2d(canvas.width/2,canvas.height/2);
+        let rotationRadius = 200;
 
-function setUp(){
-earth.pos = new Vector2d(canvas.width/2, canvas.height/2);
-earth.point = new Point(earth.pos.dx, earth.pos.dy, 100, "turquoise");
+        function setUp(){
+          gameObject.pos = new Vector2d(0,0);
+          gameObject.relPos = new Vector2d(1,0);
+          gameObject.relPos.magnitude = rotationRadius;
+          gameObject.Point = new Point(0,0,30);
+		  
+          gameObject.draw = function()
+		  {
+          gameObject.Point.x = gameObject.pos.dx;
+          gameObject.Point.y = gameObject.pos.dy;
+          gameObject.Point.draw(context);
+          }
+		  
+          animate();
+        }
 
-moon.pos = new Vector2d(canvas.width/3, canvas.height/2);
-moon.point = new Point(moon.pos.dx, moon.pos.dy, 40, "grey");
-moon.vel = new Vector2d(0,1);
-moon.acc = new Vector2d(0,0);
+        function animate(){
+          context.clearRect(0,0,canvas.width,canvas.height);
+          requestAnimationFrame(animate);
+          gameObject.relPos.angle+=dAngle;
+          gameObject.pos.sumVector(gameObject.relPos,pivot);
+          gameObject.draw();
+        }
 
-
-	distanceMoonEarth = 1;
-  animate();
-}
-
-
-function animate()
-{
-	requestAnimationFrame(animate);
-	context.fillStyle = "rgba(25,25,40,0.2)";
-	context.fillRect(0,0,canvas.width, canvas.height);
-	
-	moon.pos.add(moon.vel);
-	moon.acc.differenceVector(earth.pos, moon.pos);
-	distanceMoonEarth = moon.acc.magnitude;
-	moon.acc.magnitude = 1000/(distanceMoonEarth*distanceMoonEarth);
-	
-	moon.vel.add(moon.acc);
-	
-	
-	earth.point.draw(context);
-	moon.point.position(moon.pos);
-	moon.point.draw(context);
-}
-
-setUp();
+        setUp();

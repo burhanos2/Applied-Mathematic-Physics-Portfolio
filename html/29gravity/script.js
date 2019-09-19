@@ -8,10 +8,10 @@ let distanceMoonEarth;
 
 function setUp(){
 earth.pos = new Vector2d(canvas.width/2, canvas.height/2);
-earth.point = new Point(earth.pos.dx, earth.pos.dy, 100, "turquoise");
+earth.point = new Point(earth.pos.dx, earth.pos.dy, 50, "turquoise");
 
-moon.pos = new Vector2d(canvas.width/3, canvas.height/2);
-moon.point = new Point(moon.pos.dx, moon.pos.dy, 40, "grey");
+moon.pos = new Vector2d(canvas.width/4, canvas.height/2);
+moon.point = new Point(moon.pos.dx, moon.pos.dy, 20, "grey");
 moon.vel = new Vector2d(0,1);
 moon.acc = new Vector2d(0,0);
 
